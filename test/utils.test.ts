@@ -1,4 +1,4 @@
-import { add } from './utils.js';
+import { add } from '../src/utils';
 import { test, expect } from 'vitest';
 
 test('add', () => {

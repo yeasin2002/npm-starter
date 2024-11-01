@@ -14,7 +14,7 @@
     "test": "vitest run",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "npm run ci",
-    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test",
+    "ci": "npm run build && npm run format:check && npm run check-exports && npm run lint && npm run test",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },

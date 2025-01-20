@@ -1,7 +1,7 @@
 {
   "name": "npm-starter",
   "version": "1.0.1",
-  "description": "A demo package for Total TypeScript",
+  "description": "Starter Template for creating NPM Packages",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -22,14 +22,14 @@
     "demo",
     "typescript"
   ],
-  "homepage": "https://github.com/mattpocock/tt-package-demo",
+  "homepage": "https://github.com/yeasin2002/npm-starter",
   "bugs": {
-    "url": "https://github.com/mattpocock/tt-package-demo/issues"
+    "url": "https://github.com/yeasin2002/npm-starter/issues"
   },
-  "author": "Matt Pocock <team@totaltypescript.com> (https://totaltypescript.com)",
+  "author": "Md Kawsar Islam Yeasin <mdkawsarislam2002@gmail.com> (https://yeasin2002.vercel.app/)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mattpocock/tt-package-demo.git"
+    "url": "git+https://github.com/yeasin2002/npm-starter.git"
   },
   "files": [
     "dist"

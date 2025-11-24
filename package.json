@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vitest",
     "build": "tsdown",
-    "clean": "rimraf dist coverage .turbo node_modules/.cache",
+    "clean": "rimraf dist coverage docs .turbo node_modules/.cache",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",
     "format:write": "prettier --write .",
@@ -23,6 +23,8 @@
     "audit": "pnpm audit --audit-level=moderate",
     "size": "size-limit",
     "size:why": "size-limit --why",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
     "local-release": "changeset version && changeset publish",
     "release": "changeset publish",
     "prepublishOnly": "pnpm run ci",

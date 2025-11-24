@@ -20,6 +20,7 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 - **🔒 Security Audits** - Automated security scanning with scheduled workflows
 - **📏 Bundle Size Monitoring** - Track package size with size-limit
 - **🐛 VS Code Integration** - Debug configurations and extension recommendations
+- **📖 API Documentation** - Auto-generated documentation with [TypeDoc](https://typedoc.org/)
 - **📚 Dual Format** - Supports both CommonJS and ESM modules
 
 ## 🚀 Quick Start
@@ -81,6 +82,13 @@ pnpm run test
 | `pnpm run lint:fix`     | Auto-fix linting issues          |
 | `pnpm run format:write` | Format code with Prettier        |
 | `pnpm run format:check` | Check code formatting            |
+
+### Documentation
+
+| Script               | Description                        |
+| -------------------- | ---------------------------------- |
+| `pnpm run docs`      | Generate API documentation         |
+| `pnpm run docs:watch` | Generate docs in watch mode       |
 
 ### Security & Size
 
@@ -171,13 +179,20 @@ Create new files in the `src/` directory and export them through `src/index.ts`:
 
 ```typescript
 // src/myFeature.ts
-export const myFunction = () => {
+/**
+ * Description of your function
+ * @param param - Parameter description
+ * @returns Return value description
+ */
+export const myFunction = (param: string) => {
   // Your code here
 }
 
 // src/index.ts
 export * from './myFeature'
 ```
+
+Add JSDoc comments to your code for automatic API documentation generation.
 
 ### 2. **Writing Tests**
 

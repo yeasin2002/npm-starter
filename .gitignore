@@ -174,10 +174,3 @@ yarn.lock/*
 
 # Finder (MacOS) folder config
 .DS_Store
-
-
-# lock files 
-yarn.lock
-package-lock.json
-pnpm-lock.yaml
-bun.lockb

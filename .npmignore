@@ -7,6 +7,9 @@
 !package.json
 !LICENSE
 
+# Exclude source maps from published package
+dist/**/*.map
+
 # Exclude development files
 src/
 test/

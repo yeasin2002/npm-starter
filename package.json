@@ -17,6 +17,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "local-release": "changeset version && changeset publish",
+    "release": "changeset publish",
     "prepublishOnly": "pnpm run ci",
     "ci": "pnpm run build && pnpm run format:check && pnpm run check-exports && pnpm run lint && pnpm run test",
     "prepare": "husky",
@@ -42,6 +43,8 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.39.1",
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "^8.0.0",

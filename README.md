@@ -14,7 +14,9 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 - **🔍 Type Safety** - Automatic type checking and export validation with [@arethetypeswrong/cli](https://github.com/arethetypeswrong/arethetypeswrong.github.io)
 - **📝 Changesets** - Version management and changelog generation with [Changesets](https://github.com/changesets/changesets)
 - **🪝 Git Hooks** - Pre-commit hooks with [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged)
-- **🤖 CI/CD** - GitHub Actions workflow for automated testing
+- **✅ Commit Linting** - Enforce conventional commits with [Commitlint](https://commitlint.js.org/)
+- **🤖 CI/CD** - GitHub Actions workflows for automated testing and releases
+- **🔄 Automated Updates** - Dependabot configuration for dependencies and GitHub Actions
 - **📚 Dual Format** - Supports both CommonJS and ESM modules
 
 ## 🚀 Quick Start
@@ -156,16 +158,30 @@ test('myFunction works', () => {
 })
 ```
 
-### 3. **Pre-commit Hooks**
+### 3. **Commit Conventions**
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/):
+
+```bash
+git commit -m "feat: add new feature"
+git commit -m "fix: resolve bug in utils"
+git commit -m "docs: update README"
+```
+
+Commitlint will automatically validate your commit messages.
+
+### 4. **Pre-commit Hooks**
 
 Before each commit, the following runs automatically:
 
+- **Commitlint** validates commit message format
 - **Prettier** formats TypeScript, JavaScript, JSON, and Markdown files
+- **ESLint** checks and fixes code quality issues
 - Only staged files are processed for faster commits
 
-### 4. **Continuous Integration**
+### 5. **Continuous Integration & Deployment**
 
-On every push and pull request, GitHub Actions will:
+**CI Workflow** - On every push and pull request:
 
 1. ✅ Install dependencies
 2. ✅ Build the package
@@ -173,6 +189,18 @@ On every push and pull request, GitHub Actions will:
 4. ✅ Validate package exports
 5. ✅ Run type checking
 6. ✅ Execute all tests
+
+**Release Workflow** - On push to main branch:
+
+1. 🚀 Automatically creates release PRs via Changesets
+2. 📦 Publishes to npm when release PR is merged
+3. 📝 Updates CHANGELOG.md automatically
+
+**Dependabot** - Automated dependency updates:
+
+- Weekly updates for npm dependencies (grouped by type)
+- Weekly updates for GitHub Actions
+- Automatic PR creation with proper labels
 
 ## 📦 Publishing
 

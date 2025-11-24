@@ -88,7 +88,7 @@ pnpm run test:coverage  # With coverage report
 
 ## Commit Convention
 
-We use [Conventional Commits](https://www.conventionalcommits.org/) for clear commit history:
+We use [Conventional Commits](https://www.conventionalcommits.org/) enforced by [Commitlint](https://commitlint.js.org/):
 
 - `feat:` A new feature
 - `fix:` A bug fix
@@ -97,7 +97,10 @@ We use [Conventional Commits](https://www.conventionalcommits.org/) for clear co
 - `refactor:` Code changes that neither fix bugs nor add features
 - `perf:` Performance improvements
 - `test:` Adding or correcting tests
-- `chore:` Changes to build process or auxiliary tools
+- `build:` Changes to build system or dependencies
+- `ci:` Changes to CI configuration
+- `chore:` Other changes that don't modify src or test files
+- `revert:` Reverts a previous commit
 
 **Examples:**
 
@@ -106,6 +109,8 @@ git commit -m "feat: add support for custom options"
 git commit -m "fix: handle edge case in add function"
 git commit -m "docs: update README with new examples"
 ```
+
+**Note:** Commitlint will automatically validate your commit messages. Invalid commits will be rejected.
 
 ## Pull Request Process
 

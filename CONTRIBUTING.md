@@ -28,7 +28,6 @@ We welcome contributions from everyone. By participating in this project, you ag
    ```
 
 4. **Make Your Changes**
-
    - Write code
    - Add tests
    - Update documentation
@@ -111,12 +110,10 @@ git commit -m "docs: update README with new examples"
 ## Pull Request Process
 
 1. **Update Documentation**
-
    - Update README.md if you add new features
    - Add JSDoc comments to your code
 
 2. **Add Tests**
-
    - Ensure your changes are covered by tests
    - Maintain or improve code coverage (80%+ is required)
 

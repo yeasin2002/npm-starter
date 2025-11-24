@@ -203,13 +203,11 @@ npm publish
 ## 🛠️ Customization
 
 1. **Update package.json**
-
    - Change `name`, `description`, `keywords`
    - Update `author`, `repository`, and `homepage`
    - Modify `version` as needed
 
 2. **Customize the build**
-
    - Edit `tsdown.config.ts` to adjust build settings
    - Modify `tsconfig.json` for TypeScript options
 

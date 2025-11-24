@@ -7,21 +7,34 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 
 ## ✨ Features
 
-- **📦 TypeScript First** - Full TypeScript support with strict configuration
-- **⚡ Modern Build System** - Uses [tsdown](https://github.com/egoist/tsdown) for fast builds with dual CJS/ESM output
-- **🧪 Testing Ready** - Configured with [Vitest](https://vitest.dev/) for fast unit testing
-- **🎨 Code Formatting** - Pre-configured [Prettier](https://prettier.io/) with sensible defaults
-- **🔍 Type Safety** - Automatic type checking and export validation with [@arethetypeswrong/cli](https://github.com/arethetypeswrong/arethetypeswrong.github.io)
-- **📝 Changesets** - Version management and changelog generation with [Changesets](https://github.com/changesets/changesets)
-- **🪝 Git Hooks** - Pre-commit hooks with [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged)
-- **✅ Commit Linting** - Enforce conventional commits with [Commitlint](https://commitlint.js.org/)
-- **🤖 CI/CD** - GitHub Actions workflows for automated testing and releases
-- **🔄 Automated Updates** - Dependabot configuration for dependencies and GitHub Actions
-- **🔒 Security Audits** - Automated security scanning with scheduled workflows
-- **📏 Bundle Size Monitoring** - Track package size with size-limit
-- **🐛 VS Code Integration** - Debug configurations and extension recommendations
-- **📖 API Documentation** - Auto-generated documentation with [TypeDoc](https://typedoc.org/)
-- **📚 Dual Format** - Supports both CommonJS and ESM modules
+### Build & Type System
+
+- **📦 TypeScript 5.9+** - Strict mode with modern ES2022 target and comprehensive type safety
+- **⚡ tsdown** - Lightning-fast builds with dual CJS/ESM output and automatic type declarations
+- **🔍 Export Validation** - Ensure package exports work correctly with [@arethetypeswrong/cli](https://github.com/arethetypeswrong/arethetypeswrong.github.io)
+- **📚 Dual Module Format** - Full CommonJS and ESM support for maximum compatibility
+
+### Testing & Quality
+
+- **🧪 Vitest** - Fast unit testing with globals, coverage reporting, and 80% thresholds
+- **🎨 Prettier** - Consistent code formatting (single quotes, no semicolons, 100 char width)
+- **🔧 ESLint** - TypeScript-aware linting with type-checked rules
+- **📏 size-limit** - Monitor and control bundle size
+
+### Automation & Workflow
+
+- **🪝 Husky + lint-staged** - Pre-commit hooks for automatic formatting and linting
+- **✅ Commitlint** - Enforce conventional commits for better changelogs
+- **📝 Changesets** - Automated version management and changelog generation
+- **🤖 GitHub Actions** - Complete CI/CD pipeline for testing and releases
+- **🔄 Dependabot** - Weekly automated dependency updates with proper grouping
+
+### Documentation & Developer Experience
+
+- **📖 TypeDoc** - Auto-generated API documentation from JSDoc comments
+- **🐛 VS Code Integration** - Debug configurations and recommended extensions
+- **🔒 Security Audits** - Automated dependency scanning
+- **🎯 Multiple Package Managers** - Works with npm, yarn, pnpm, or bun
 
 ## 🚀 Quick Start
 
@@ -85,10 +98,10 @@ pnpm run test
 
 ### Documentation
 
-| Script               | Description                        |
-| -------------------- | ---------------------------------- |
-| `pnpm run docs`      | Generate API documentation         |
-| `pnpm run docs:watch` | Generate docs in watch mode       |
+| Script                | Description                 |
+| --------------------- | --------------------------- |
+| `pnpm run docs`       | Generate API documentation  |
+| `pnpm run docs:watch` | Generate docs in watch mode |
 
 ### Security & Size
 
@@ -111,23 +124,36 @@ pnpm run test
 
 ```
 npm-starter/
-├── .changeset/          # Changeset configuration
+├── .changeset/              # Changeset configuration and pending changes
 ├── .github/
 │   ├── workflows/
-│   │   └── ci.yml      # CI/CD pipeline
-│   └── dependabot.yml  # Dependency updates
-├── .husky/             # Git hooks
+│   │   ├── ci.yml          # CI/CD pipeline
+│   │   ├── release.yml     # Automated releases
+│   │   └── security.yml    # Security audits
+│   └── dependabot.yml      # Dependency update configuration
+├── .husky/                  # Git hooks (pre-commit, commit-msg)
+├── .kiro/                   # Kiro AI assistant configuration
+│   └── steering/           # Project-specific AI guidance
+├── .vscode/                 # VS Code settings and debug configs
 ├── src/
-│   ├── index.ts        # Main entry point
-│   └── utils.ts        # Example utilities
+│   ├── index.ts            # Main entry point (re-exports all public APIs)
+│   └── utils.ts            # Example utilities
 ├── test/
-│   └── utils.test.ts   # Test files
-├── dist/               # Build output (generated)
-├── package.json
-├── tsconfig.json       # TypeScript configuration
-├── tsdown.config.ts    # Build configuration
-├── .prettierrc         # Prettier configuration
-├── .lintstagedrc.json  # Lint-staged configuration
+│   └── utils.test.ts       # Vitest test files
+├── dist/                    # Build output (generated, gitignored)
+│   ├── index.cjs           # CommonJS bundle
+│   ├── index.js            # ESM bundle
+│   └── index.d.ts          # TypeScript declarations
+├── docs/                    # Generated API documentation (gitignored)
+├── coverage/                # Test coverage reports (gitignored)
+├── package.json             # Package metadata and scripts
+├── tsconfig.json            # TypeScript compiler options
+├── tsdown.config.ts         # Build configuration
+├── vitest.config.ts         # Test configuration
+├── eslint.config.js         # Linting rules
+├── .prettierrc              # Code formatting rules
+├── .lintstagedrc.json       # Pre-commit hook configuration
+├── commitlint.config.js     # Commit message linting
 └── README.md
 ```
 
@@ -135,24 +161,55 @@ npm-starter/
 
 ### TypeScript Configuration
 
-The project uses a strict TypeScript configuration optimized for library development:
+Strict configuration optimized for library development:
 
-- **Target**: ES2022
-- **Module System**: Preserve (supports both CJS and ESM)
-- **Strict Mode**: Enabled with additional strictness checks
-- **Declaration Files**: Generated for type definitions
-- **Source Maps**: Included for debugging
+```json
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "Preserve", // Supports both CJS and ESM
+    "strict": true, // All strict checks enabled
+    "noUncheckedIndexedAccess": true, // Extra safety for array/object access
+    "noImplicitOverride": true, // Explicit override keyword required
+    "declaration": true, // Generate .d.ts files
+    "declarationMap": true, // Source maps for declarations
+    "sourceMap": true, // Source maps for debugging
+    "isolatedModules": true, // Ensure each file can be transpiled independently
+    "verbatimModuleSyntax": true // Explicit import/export syntax
+  }
+}
+```
 
 ### Build Configuration (tsdown)
 
 ```typescript
-{
+export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],  // Dual format output
-  dts: true,                // Generate .d.ts files
+  format: ['cjs', 'esm'], // Dual format output
+  dts: true, // Generate TypeScript declarations
   outDir: 'dist',
-  clean: true               // Clean dist before build
-}
+  clean: true, // Clean dist before each build
+})
+```
+
+### Test Configuration (Vitest)
+
+```typescript
+export default defineConfig({
+  test: {
+    globals: true, // No need to import describe, it, expect
+    environment: 'node',
+    coverage: {
+      provider: 'v8',
+      thresholds: {
+        lines: 80, // 80% coverage required
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
+    },
+  },
+})
 ```
 
 ### Package Exports
@@ -221,12 +278,19 @@ Commitlint will automatically validate your commit messages.
 
 ### 4. **Pre-commit Hooks**
 
-Before each commit, the following runs automatically:
+Husky and lint-staged automatically run before each commit:
+
+```json
+{
+  "*.{ts,tsx,js,jsx}": ["prettier --write", "eslint --fix"],
+  "*.{json,md,yml,yaml}": ["prettier --write"]
+}
+```
 
 - **Commitlint** validates commit message format
-- **Prettier** formats TypeScript, JavaScript, JSON, and Markdown files
-- **ESLint** checks and fixes code quality issues
-- Only staged files are processed for faster commits
+- **Prettier** formats all staged files
+- **ESLint** checks and auto-fixes TypeScript/JavaScript issues
+- Only staged files are processed for speed
 
 ### 5. **Continuous Integration & Deployment**
 
@@ -279,19 +343,121 @@ pnpm publish
 
 ## 🛠️ Customization
 
-1. **Update package.json**
-   - Change `name`, `description`, `keywords`
-   - Update `author`, `repository`, and `homepage`
-   - Modify `version` as needed
+### 1. Update Package Metadata
 
-2. **Customize the build**
-   - Edit `tsdown.config.ts` to adjust build settings
-   - Modify `tsconfig.json` for TypeScript options
+Edit `package.json`:
 
-3. **Add dependencies**
-   - Production: `pnpm add package-name`
-   - Development: `pnpm add -D package-name`
-   - Peer dependencies: Add to `peerDependencies` in package.json
+```json
+{
+  "name": "your-package-name",
+  "version": "0.0.1",
+  "description": "Your package description",
+  "keywords": ["keyword1", "keyword2"],
+  "author": "Your Name <your.email@example.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/repo.git"
+  },
+  "homepage": "https://github.com/username/repo"
+}
+```
+
+### 2. Customize Build & TypeScript
+
+**Build settings** (`tsdown.config.ts`):
+
+- Add/remove output formats
+- Configure external dependencies
+- Adjust bundling options
+
+**TypeScript options** (`tsconfig.json`):
+
+- Change target/lib versions
+- Adjust strictness levels
+- Modify path mappings
+
+### 3. Configure Code Quality
+
+**ESLint** (`eslint.config.js`):
+
+- Add custom rules
+- Configure type-checking behavior
+- Adjust ignore patterns
+
+**Prettier** (`.prettierrc`):
+
+- Change formatting preferences
+- Adjust line width, quotes, semicolons
+
+### 4. Add Dependencies
+
+```bash
+# Production dependencies (bundled with your package)
+pnpm add package-name
+
+# Development dependencies (build tools, testing)
+pnpm add -D package-name
+
+# Peer dependencies (required by consumers)
+# Add to peerDependencies in package.json
+```
+
+### 5. Adjust Coverage Thresholds
+
+Edit `vitest.config.ts` to change coverage requirements:
+
+```typescript
+coverage: {
+  thresholds: {
+    lines: 80,      // Adjust as needed
+    functions: 80,
+    branches: 80,
+    statements: 80
+  }
+}
+```
+
+## 🔧 Troubleshooting
+
+### Build Issues
+
+```bash
+# Clean all build artifacts and caches
+pnpm run clean
+
+# Reinstall dependencies
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
+```
+
+### Type Errors
+
+```bash
+# Run type checking with detailed output
+pnpm run typecheck
+
+# Check for export issues
+pnpm run check-exports
+```
+
+### Test Failures
+
+```bash
+# Run tests with verbose output
+pnpm run test -- --reporter=verbose
+
+# Run specific test file
+pnpm run test test/utils.test.ts
+```
+
+## 📚 Resources
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Vitest Documentation](https://vitest.dev/)
+- [tsdown Documentation](https://github.com/egoist/tsdown)
+- [Changesets Guide](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Total TypeScript - NPM Package Guide](https://www.totaltypescript.com/how-to-create-an-npm-package)
 
 ## 📄 License
 
@@ -301,7 +467,7 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 **Md Kawsar Islam Yeasin**
 
-- Email: mdkawsarislam2002@gmail.com
+- Email: [mdkawsarislam2002@gmail.com](mailto:mdkawsarislam2002@gmail.com)
 - Website: [yeasin2002.vercel.app](https://yeasin2002.vercel.app/)
 - GitHub: [@yeasin2002](https://github.com/yeasin2002)
 
@@ -309,12 +475,14 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/yeasin2002/npm-starter/issues).
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feat/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feat/amazing-feature`)
+5. Open a Pull Request
 
-## ⭐ Show your support
+See the [issues page](https://github.com/yeasin2002/npm-starter/issues) for known issues and feature requests.
 
-Give a ⭐️ if this project helped you!
+## ⭐ Show Your Support
 
----
-
-**Note**: This starter template follows best practices from [Total TypeScript's guide on creating NPM packages](https://www.totaltypescript.com/how-to-create-an-npm-package).
+Give a ⭐️ if this project helped you build better NPM packages!

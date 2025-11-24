@@ -10,14 +10,7 @@
   "name": "npm-starter",
   "includeVersion": true,
   "sort": ["source-order"],
-  "kindSortOrder": [
-    "Function",
-    "Class",
-    "Interface",
-    "TypeAlias",
-    "Variable",
-    "Enum"
-  ],
+  "kindSortOrder": ["Function", "Class", "Interface", "TypeAlias", "Variable", "Enum"],
   "categorizeByGroup": true,
   "navigationLinks": {
     "GitHub": "https://github.com/yeasin2002/npm-starter"

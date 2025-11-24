@@ -17,6 +17,9 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 - **✅ Commit Linting** - Enforce conventional commits with [Commitlint](https://commitlint.js.org/)
 - **🤖 CI/CD** - GitHub Actions workflows for automated testing and releases
 - **🔄 Automated Updates** - Dependabot configuration for dependencies and GitHub Actions
+- **🔒 Security Audits** - Automated security scanning with scheduled workflows
+- **📏 Bundle Size Monitoring** - Track package size with size-limit
+- **🐛 VS Code Integration** - Debug configurations and extension recommendations
 - **📚 Dual Format** - Supports both CommonJS and ESM modules
 
 ## 🚀 Quick Start
@@ -52,18 +55,49 @@ pnpm run test
 
 ## 📋 Available Scripts
 
-| Script                   | Description                                                 |
-| ------------------------ | ----------------------------------------------------------- |
-| `pnpm run dev`           | Run tests in watch mode with Vitest                         |
-| `pnpm run build`         | Build the package with tsdown (CJS + ESM)                   |
-| `pnpm run format:write`  | Format code with Prettier                                   |
-| `pnpm run format:check`  | Check code formatting                                       |
-| `pnpm run check-exports` | Validate package exports with ATTW                          |
-| `pnpm run lint`          | Type-check with TypeScript compiler                         |
-| `pnpm run test`          | Run all tests                                               |
-| `pnpm run ci`            | Run full CI pipeline (build + format + check + lint + test) |
-| `pnpm run local-release` | Version and publish using Changesets                        |
-| `pnpm run prepare`       | Set up Husky git hooks                                      |
+### Development
+
+| Script                     | Description                           |
+| -------------------------- | ------------------------------------- |
+| `pnpm run dev`             | Run tests in watch mode               |
+| `pnpm run build`           | Build the package (CJS + ESM + types) |
+| `pnpm run clean`           | Remove build artifacts and caches     |
+| `pnpm run typecheck`       | Run TypeScript type checking          |
+| `pnpm run typecheck:watch` | Run type checking in watch mode       |
+
+### Testing
+
+| Script                   | Description                    |
+| ------------------------ | ------------------------------ |
+| `pnpm run test`          | Run all tests once             |
+| `pnpm run test:watch`    | Run tests in watch mode        |
+| `pnpm run test:coverage` | Run tests with coverage report |
+
+### Code Quality
+
+| Script                  | Description                      |
+| ----------------------- | -------------------------------- |
+| `pnpm run lint`         | Run ESLint and TypeScript checks |
+| `pnpm run lint:fix`     | Auto-fix linting issues          |
+| `pnpm run format:write` | Format code with Prettier        |
+| `pnpm run format:check` | Check code formatting            |
+
+### Security & Size
+
+| Script              | Description                        |
+| ------------------- | ---------------------------------- |
+| `pnpm run audit`    | Run security audit on dependencies |
+| `pnpm run size`     | Check bundle size                  |
+| `pnpm run size:why` | Analyze bundle size with details   |
+
+### Release & CI
+
+| Script                   | Description                 |
+| ------------------------ | --------------------------- |
+| `pnpm run check-exports` | Validate package exports    |
+| `pnpm run ci`            | Run full CI pipeline        |
+| `pnpm run local-release` | Version and publish locally |
+| `pnpm run release`       | Publish to npm (used by CI) |
 
 ## 📁 Project Structure
 

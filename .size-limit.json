@@ -1,0 +1,12 @@
+[
+  {
+    "name": "ESM",
+    "path": "dist/index.mjs",
+    "limit": "10 KB"
+  },
+  {
+    "name": "CJS",
+    "path": "dist/index.cjs",
+    "limit": "10 KB"
+  }
+]

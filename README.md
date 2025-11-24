@@ -29,39 +29,39 @@ git clone https://github.com/yeasin2002/npm-starter.git my-package
 cd my-package
 
 # Install dependencies (supports npm, yarn, pnpm, or bun)
-npm install
+pnpm install
 ```
 
 ### Development
 
 ```bash
 # Run tests in watch mode
-npm run dev
+pnpm run dev
 
 # Build the package
-npm run build
+pnpm run build
 
 # Run type checking
-npm run lint
+pnpm run lint
 
 # Run tests
-npm run test
+pnpm run test
 ```
 
 ## 📋 Available Scripts
 
-| Script                  | Description                                                 |
-| ----------------------- | ----------------------------------------------------------- |
-| `npm run dev`           | Run tests in watch mode with Vitest                         |
-| `npm run build`         | Build the package with tsdown (CJS + ESM)                   |
-| `npm run format:write`  | Format code with Prettier                                   |
-| `npm run format:check`  | Check code formatting                                       |
-| `npm run check-exports` | Validate package exports with ATTW                          |
-| `npm run lint`          | Type-check with TypeScript compiler                         |
-| `npm run test`          | Run all tests                                               |
-| `npm run ci`            | Run full CI pipeline (build + format + check + lint + test) |
-| `npm run local-release` | Version and publish using Changesets                        |
-| `npm run prepare`       | Set up Husky git hooks                                      |
+| Script                   | Description                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| `pnpm run dev`           | Run tests in watch mode with Vitest                         |
+| `pnpm run build`         | Build the package with tsdown (CJS + ESM)                   |
+| `pnpm run format:write`  | Format code with Prettier                                   |
+| `pnpm run format:check`  | Check code formatting                                       |
+| `pnpm run check-exports` | Validate package exports with ATTW                          |
+| `pnpm run lint`          | Type-check with TypeScript compiler                         |
+| `pnpm run test`          | Run all tests                                               |
+| `pnpm run ci`            | Run full CI pipeline (build + format + check + lint + test) |
+| `pnpm run local-release` | Version and publish using Changesets                        |
+| `pnpm run prepare`       | Set up Husky git hooks                                      |
 
 ## 📁 Project Structure
 
@@ -183,7 +183,7 @@ On every push and pull request, GitHub Actions will:
 npx changeset
 
 # 2. Version packages
-npm run local-release
+pnpm run local-release
 
 # The package will be automatically published when you push
 ```
@@ -192,10 +192,10 @@ npm run local-release
 
 ```bash
 # Build and verify
-npm run ci
+pnpm run ci
 
 # Publish to npm
-npm publish
+pnpm publish
 ```
 
 > **Note**: The `prepublishOnly` script ensures all checks pass before publishing.
@@ -212,8 +212,8 @@ npm publish
    - Modify `tsconfig.json` for TypeScript options
 
 3. **Add dependencies**
-   - Production: `npm install package-name`
-   - Development: `npm install -D package-name`
+   - Production: `pnpm add package-name`
+   - Development: `pnpm add -D package-name`
    - Peer dependencies: Add to `peerDependencies` in package.json
 
 ## 📄 License

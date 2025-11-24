@@ -18,7 +18,7 @@ We welcome contributions from everyone. By participating in this project, you ag
 2. **Install Dependencies**
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Create a Branch**
@@ -35,14 +35,14 @@ We welcome contributions from everyone. By participating in this project, you ag
 5. **Run Tests**
 
    ```bash
-   npm test
-   npm run test:coverage
+   pnpm test
+   pnpm run test:coverage
    ```
 
 6. **Lint Your Code**
    ```bash
-   npm run lint
-   npm run format:check
+   pnpm run lint
+   pnpm run format:check
    ```
 
 ## Development Workflow
@@ -81,9 +81,9 @@ describe('myFunction', () => {
 Run tests with:
 
 ```bash
-npm run dev       # Watch mode
-npm test          # Single run
-npm run test:coverage  # With coverage report
+pnpm run dev       # Watch mode
+pnpm test          # Single run
+pnpm run test:coverage  # With coverage report
 ```
 
 ## Commit Convention
@@ -120,7 +120,7 @@ git commit -m "docs: update README with new examples"
 3. **Run Full CI Locally**
 
    ```bash
-   npm run ci
+   pnpm run ci
    ```
 
 4. **Create a Changeset**

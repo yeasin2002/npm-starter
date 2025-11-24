@@ -1,8 +1,20 @@
-# npmize
+# Ignore everything by default
 *
-!lib/**
+
+# Include only what's needed for the package
 !dist/**
 !README.md
 !package.json
+!LICENSE
 
-__lab__
+# Exclude development files
+src/
+test/
+*.test.*
+*.spec.*
+.github/
+.husky/
+.changeset/
+.vscode/
+coverage/
+node_modules/

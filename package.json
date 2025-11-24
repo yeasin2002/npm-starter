@@ -2,7 +2,9 @@
   "name": "npm-starter",
   "version": "1.0.1",
   "description": "Starter Template for creating NPM Packages",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "dev": "vitest",
@@ -10,11 +12,13 @@
     "format:write": "prettier --write .",
     "format:check": "prettier --check .",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
-    "lint": "tsc",
+    "lint": "eslint . && tsc",
+    "lint:fix": "eslint . --fix",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "local-release": "changeset version && changeset publish",
-    "prepublishOnly": "npm run ci",
-    "ci": "npm run build && npm run format:check && npm run check-exports && npm run lint && npm run test",
+    "prepublishOnly": "pnpm run ci",
+    "ci": "pnpm run build && pnpm run format:check && pnpm run check-exports && pnpm run lint && pnpm run test",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
@@ -35,14 +39,21 @@
     "dist"
   ],
   "type": "module",
-  "dependencies": {
+  "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@changesets/cli": "^2.29.7",
+    "@eslint/js": "^9.39.1",
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/coverage-v8": "^4.0.13",
+    "eslint": "^9.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "tsdown": "^0.16.6",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0",
     "vitest": "^4.0.13"
   },
   "exports": {
@@ -51,9 +62,6 @@
       "import": "./dist/index.js",
       "default": "./dist/index.cjs"
     }
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

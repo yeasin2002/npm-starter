@@ -95,6 +95,7 @@ pnpm run test
 | `pnpm run lint:fix`     | Auto-fix linting issues          |
 | `pnpm run format:write` | Format code with Prettier        |
 | `pnpm run format:check` | Check code formatting            |
+| `pnpm knip`             | Declutter unused dependencies    |
 
 ### Documentation
 

@@ -1,4 +1,10 @@
 {
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "pnpm*, .yarnrc*, yarn*, eslint.config*, .prettier*, prettier*, .editorconfig",
+    "README.md": "CHANGELOG.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, LICENSE"
+  },
+
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {

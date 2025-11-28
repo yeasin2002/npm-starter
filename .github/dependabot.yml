@@ -11,8 +11,6 @@ updates:
       day: 'monday'
       time: '09:00'
     open-pull-requests-limit: 10
-    reviewers:
-      - 'yeasin2002'
     assignees:
       - 'yeasin2002'
     commit-message:
@@ -43,8 +41,6 @@ updates:
       day: 'monday'
       time: '09:00'
     open-pull-requests-limit: 5
-    reviewers:
-      - 'yeasin2002'
     assignees:
       - 'yeasin2002'
     commit-message:

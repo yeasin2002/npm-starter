@@ -9,15 +9,15 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 
 ### Build & Type System
 
-- **📦 TypeScript 5.9+** - Strict mode with modern ES2022 target and comprehensive type safety
-- **⚡ tsdown** - Lightning-fast builds with dual CJS/ESM output and automatic type declarations
+- **📦 TypeScript 5.9+** - Proper TypeScript support
+- **⚡ tsdown** - Rust based Lightning-fast builds
 - **🔍 Export Validation** - Ensure package exports work correctly with [@arethetypeswrong/cli](https://github.com/arethetypeswrong/arethetypeswrong.github.io)
 - **📚 Dual Module Format** - Full CommonJS and ESM support for maximum compatibility
 
 ### Testing & Quality
 
-- **🧪 Vitest** - Fast unit testing with globals, coverage reporting, and 80% thresholds
-- **🎨 Prettier** - Consistent code formatting (single quotes, no semicolons, 100 char width)
+- **🧪 Vitest**
+- **🎨 Prettier** - Consistent code formatting with all necessary rules
 - **🔧 ESLint** - TypeScript-aware linting with type-checked rules
 - **📏 size-limit** - Monitor and control bundle size
 
@@ -34,7 +34,6 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 - **📖 TypeDoc** - Auto-generated API documentation from JSDoc comments
 - **🐛 VS Code Integration** - Debug configurations and recommended extensions
 - **🔒 Security Audits** - Automated dependency scanning
-- **🎯 Multiple Package Managers** - Works with npm, yarn, pnpm, or bun
 
 ## 🚀 Quick Start
 
@@ -42,10 +41,10 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 
 ```bash
 # Clone this repository
-git clone https://github.com/yeasin2002/npm-starter.git my-package
+git clone https://github.com/yeasin2002/npm-starter.git
 
 # Navigate to the directory
-cd my-package
+cd npm-starter
 
 # Install dependencies (supports npm, yarn, pnpm, or bun)
 pnpm install
@@ -158,164 +157,6 @@ npm-starter/
 └── README.md
 ```
 
-## ⚙️ Configuration
-
-### TypeScript Configuration
-
-Strict configuration optimized for library development:
-
-```json
-{
-  "compilerOptions": {
-    "target": "es2022",
-    "module": "Preserve", // Supports both CJS and ESM
-    "strict": true, // All strict checks enabled
-    "noUncheckedIndexedAccess": true, // Extra safety for array/object access
-    "noImplicitOverride": true, // Explicit override keyword required
-    "declaration": true, // Generate .d.ts files
-    "declarationMap": true, // Source maps for declarations
-    "sourceMap": true, // Source maps for debugging
-    "isolatedModules": true, // Ensure each file can be transpiled independently
-    "verbatimModuleSyntax": true // Explicit import/export syntax
-  }
-}
-```
-
-### Build Configuration (tsdown)
-
-```typescript
-export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['cjs', 'esm'], // Dual format output
-  dts: true, // Generate TypeScript declarations
-  outDir: 'dist',
-  clean: true, // Clean dist before each build
-})
-```
-
-### Test Configuration (Vitest)
-
-```typescript
-export default defineConfig({
-  test: {
-    globals: true, // No need to import describe, it, expect
-    environment: 'node',
-    coverage: {
-      provider: 'v8',
-      thresholds: {
-        lines: 80, // 80% coverage required
-        functions: 80,
-        branches: 80,
-        statements: 80,
-      },
-    },
-  },
-})
-```
-
-### Package Exports
-
-The package is configured to support both modern ESM and legacy CJS:
-
-```json
-{
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/index.js",
-      "default": "./dist/index.cjs"
-    }
-  }
-}
-```
-
-## 🔧 Development Workflow
-
-### 1. **Adding New Features**
-
-Create new files in the `src/` directory and export them through `src/index.ts`:
-
-```typescript
-// src/myFeature.ts
-/**
- * Description of your function
- * @param param - Parameter description
- * @returns Return value description
- */
-export const myFunction = (param: string) => {
-  // Your code here
-}
-
-// src/index.ts
-export * from './myFeature'
-```
-
-Add JSDoc comments to your code for automatic API documentation generation.
-
-### 2. **Writing Tests**
-
-Add test files in the `test/` directory:
-
-```typescript
-import { myFunction } from '../src/myFeature'
-import { test, expect } from 'vitest'
-
-test('myFunction works', () => {
-  expect(myFunction()).toBe(expectedValue)
-})
-```
-
-### 3. **Commit Conventions**
-
-This project uses [Conventional Commits](https://www.conventionalcommits.org/):
-
-```bash
-git commit -m "feat: add new feature"
-git commit -m "fix: resolve bug in utils"
-git commit -m "docs: update README"
-```
-
-Commitlint will automatically validate your commit messages.
-
-### 4. **Pre-commit Hooks**
-
-Husky and lint-staged automatically run before each commit:
-
-```json
-{
-  "*.{ts,tsx,js,jsx}": ["prettier --write", "eslint --fix"],
-  "*.{json,md,yml,yaml}": ["prettier --write"]
-}
-```
-
-- **Commitlint** validates commit message format
-- **Prettier** formats all staged files
-- **ESLint** checks and auto-fixes TypeScript/JavaScript issues
-- Only staged files are processed for speed
-
-### 5. **Continuous Integration & Deployment**
-
-**CI Workflow** - On every push and pull request:
-
-1. ✅ Install dependencies
-2. ✅ Build the package
-3. ✅ Check code formatting
-4. ✅ Validate package exports
-5. ✅ Run type checking
-6. ✅ Execute all tests
-
-**Release Workflow** - On push to main branch:
-
-1. 🚀 Automatically creates release PRs via Changesets
-2. 📦 Publishes to npm when release PR is merged
-3. 📝 Updates CHANGELOG.md automatically
-
-**Dependabot** - Automated dependency updates:
-
-- Weekly updates for npm dependencies (grouped by type)
-- Weekly updates for GitHub Actions
-- Automatic PR creation with proper labels
-
 ## 📦 Publishing
 
 ### Using Changesets (Recommended)
@@ -403,21 +244,6 @@ pnpm add -D package-name
 # Add to peerDependencies in package.json
 ```
 
-### 5. Adjust Coverage Thresholds
-
-Edit `vitest.config.ts` to change coverage requirements:
-
-```typescript
-coverage: {
-  thresholds: {
-    lines: 80,      // Adjust as needed
-    functions: 80,
-    branches: 80,
-    statements: 80
-  }
-}
-```
-
 ## 🔧 Troubleshooting
 
 ### Build Issues
@@ -448,7 +274,7 @@ pnpm run check-exports
 pnpm run test -- --reporter=verbose
 
 # Run specific test file
-pnpm run test test/utils.test.ts
+pnpm run test
 ```
 
 ## 📚 Resources

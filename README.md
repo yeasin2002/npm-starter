@@ -5,6 +5,10 @@ A production-ready starter template for creating modern NPM packages with TypeSc
 [![CI](https://github.com/yeasin2002/npm-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/yeasin2002/npm-starter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## ⭐ Show Your Support
+
+Give a ⭐️ if this project helped you build better NPM packages!
+
 ## ✨ Features
 
 ### Build & Type System
@@ -309,7 +313,3 @@ Contributions, issues, and feature requests are welcome!
 5. Open a Pull Request
 
 See the [issues page](https://github.com/yeasin2002/npm-starter/issues) for known issues and feature requests.
-
-## ⭐ Show Your Support
-
-Give a ⭐️ if this project helped you build better NPM packages!

@@ -61,7 +61,7 @@
     "@vitest/coverage-v8": "^4.1.8",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
-    "knip": "^5.85.0",
+    "knip": "^6.32.0",
     "lint-staged": "^16.3.1",
     "prettier": "^3.8.3",
     "rimraf": "^6.1.3",

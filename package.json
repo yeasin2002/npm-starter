@@ -52,7 +52,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
     "@changesets/cli": "^2.31.1",
-    "@commitlint/cli": "^20.5.3",
+    "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^9.39.5",
     "@size-limit/preset-small-lib": "^11.2.0",
